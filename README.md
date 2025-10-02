@@ -1,6 +1,6 @@
-# spd-dash
+# demo: https://miv.name/spd-dash/
 
-dashboard site for spd, see [github.com/goodfire-ai/spd](https://github.com/goodfire-ai/spd/)
+dev dashboard site for Stochastic Parameter Decomposition, see [github.com/goodfire-ai/spd](https://github.com/goodfire-ai/spd/)
 
 specifically based on branch [`feature/clustering-dashboard`](https://github.com/goodfire-ai/spd/tree/feature/clustering-dashboard)
 
