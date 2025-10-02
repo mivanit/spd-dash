@@ -1,0 +1,204 @@
+{
+  "total_modules": 28,
+  "total_components": 9241,
+  "total_clusters": 2240,
+  "iteration": 7000,
+  "model_path": "wandb:goodfire/spd/runs/rn9klzfs",
+  "tokenizer_name": "SimpleStories/SimpleStories-1.25M",
+  "total_parameters": 127533824,
+  "trainable_parameters": 126288000,
+  "component_size": 2000,
+  "module_list": [
+    "model.layers.0.mlp.down_proj",
+    "model.layers.0.mlp.gate_proj",
+    "model.layers.0.mlp.up_proj",
+    "model.layers.0.self_attn.k_proj",
+    "model.layers.0.self_attn.o_proj",
+    "model.layers.0.self_attn.q_proj",
+    "model.layers.0.self_attn.v_proj",
+    "model.layers.1.mlp.down_proj",
+    "model.layers.1.mlp.gate_proj",
+    "model.layers.1.mlp.up_proj",
+    "model.layers.1.self_attn.k_proj",
+    "model.layers.1.self_attn.o_proj",
+    "model.layers.1.self_attn.q_proj",
+    "model.layers.1.self_attn.v_proj",
+    "model.layers.2.mlp.down_proj",
+    "model.layers.2.mlp.gate_proj",
+    "model.layers.2.mlp.up_proj",
+    "model.layers.2.self_attn.k_proj",
+    "model.layers.2.self_attn.o_proj",
+    "model.layers.2.self_attn.q_proj",
+    "model.layers.2.self_attn.v_proj",
+    "model.layers.3.mlp.down_proj",
+    "model.layers.3.mlp.gate_proj",
+    "model.layers.3.mlp.up_proj",
+    "model.layers.3.self_attn.k_proj",
+    "model.layers.3.self_attn.o_proj",
+    "model.layers.3.self_attn.q_proj",
+    "model.layers.3.self_attn.v_proj"
+  ],
+  "config": {
+    "wandb_project": "spd",
+    "wandb_run_name": null,
+    "wandb_run_name_prefix": "",
+    "seed": 0,
+    "C": 2000,
+    "n_mask_samples": 1,
+    "gate_type": "vector_mlp",
+    "gate_hidden_dims": [
+      12
+    ],
+    "sampling": "continuous",
+    "sigmoid_type": "leaky_hard",
+    "target_module_patterns": [
+      "model.layers.*.mlp.gate_proj",
+      "model.layers.*.mlp.down_proj",
+      "model.layers.*.mlp.up_proj",
+      "model.layers.*.self_attn.q_proj",
+      "model.layers.*.self_attn.k_proj",
+      "model.layers.*.self_attn.v_proj",
+      "model.layers.*.self_attn.o_proj"
+    ],
+    "identity_module_patterns": null,
+    "use_delta_component": true,
+    "faithfulness_coeff": null,
+    "ci_recon_coeff": null,
+    "stochastic_recon_coeff": 0.2,
+    "ci_recon_layerwise_coeff": null,
+    "stochastic_recon_layerwise_coeff": 2.0,
+    "ci_masked_recon_subset_coeff": null,
+    "stochastic_recon_subset_coeff": null,
+    "importance_minimality_coeff": 0.0003,
+    "pnorm": 2.0,
+    "p_anneal_start_frac": 0.0,
+    "p_anneal_final_p": 0.3,
+    "p_anneal_end_frac": 1.0,
+    "output_loss_type": "kl",
+    "lr": 0.0005,
+    "steps": 50000,
+    "batch_size": 48,
+    "gradient_accumulation_steps": 1,
+    "lr_schedule": "cosine",
+    "lr_exponential_halflife": null,
+    "lr_warmup_pct": 0.0,
+    "out_dir": null,
+    "train_log_freq": 100,
+    "eval_freq": 1000,
+    "eval_batch_size": 48,
+    "slow_eval_freq": 5000,
+    "n_eval_steps": 5,
+    "slow_eval_on_first_step": true,
+    "save_freq": null,
+    "eval_metrics": [
+      {
+        "classname": "CIHistograms",
+        "extra_init_kwargs": {
+          "n_batches_accum": 5
+        }
+      },
+      {
+        "classname": "ComponentActivationDensity",
+        "extra_init_kwargs": {}
+      },
+      {
+        "classname": "CI_L0",
+        "extra_init_kwargs": {
+          "groups": {
+            "layer_0": [
+              "model.layers.0.*"
+            ],
+            "layer_1": [
+              "model.layers.1.*"
+            ],
+            "layer_2": [
+              "model.layers.2.*"
+            ],
+            "layer_3": [
+              "model.layers.3.*"
+            ],
+            "total": [
+              "*"
+            ]
+          }
+        }
+      },
+      {
+        "classname": "CEandKLLosses",
+        "extra_init_kwargs": {
+          "rounding_threshold": 0.0
+        }
+      },
+      {
+        "classname": "CIMeanPerComponent",
+        "extra_init_kwargs": {}
+      },
+      {
+        "classname": "SubsetReconstructionLoss",
+        "extra_init_kwargs": {
+          "exclude_patterns": {
+            "all_but_layer_0": [
+              "model.layers.0.*"
+            ],
+            "all_but_layer_1": [
+              "model.layers.1.*"
+            ],
+            "all_but_layer_2": [
+              "model.layers.2.*"
+            ],
+            "all_but_layer_3": [
+              "model.layers.3.*"
+            ]
+          },
+          "include_patterns": {
+            "attention_only": [
+              "*.self_attn.*"
+            ],
+            "layer_0_only": [
+              "model.layers.0.*"
+            ],
+            "layer_1_only": [
+              "model.layers.1.*"
+            ],
+            "layer_2_only": [
+              "model.layers.2.*"
+            ],
+            "layer_3_only": [
+              "model.layers.3.*"
+            ],
+            "mlp_only": [
+              "*.mlp.*"
+            ]
+          },
+          "n_mask_samples": 1,
+          "use_all_ones_for_non_replaced": false
+        }
+      },
+      {
+        "classname": "FaithfulnessLoss",
+        "extra_init_kwargs": {}
+      }
+    ],
+    "ci_alive_threshold": 0.0,
+    "n_examples_until_dead": 1368400,
+    "pretrained_model_class": "transformers.LlamaForCausalLM",
+    "pretrained_model_path": null,
+    "pretrained_model_name": "SimpleStories/SimpleStories-1.25M",
+    "pretrained_model_output_attr": "logits",
+    "tokenizer_name": "SimpleStories/SimpleStories-1.25M",
+    "task_config": {
+      "task_name": "lm",
+      "max_seq_len": 512,
+      "buffer_size": 1000,
+      "dataset_name": "SimpleStories/SimpleStories",
+      "column_name": "story",
+      "train_data_split": "train",
+      "eval_data_split": "test",
+      "shuffle_each_epoch": true,
+      "is_tokenized": false,
+      "streaming": false
+    },
+    "dist_backend": null
+  },
+  "wandb_run": "wandb:goodfire/spd/runs/rn9klzfs"
+}
