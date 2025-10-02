@@ -1,0 +1,13 @@
+[project]
+name = "spd-dash"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "spd @ file:///home/miv/projects/MATS/spd",  # Local editable install
+    # "spd @ git+https://github.com/goodfire-ai/spd.git@feature/clustering-dashboard",
+]
